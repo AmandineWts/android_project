@@ -8,6 +8,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProfessionAdapter extends RecyclerView.Adapter<ProfessionAdapter.ProfessionViewHolder> {
 
     public static class ProfessionViewHolder extends RecyclerView.ViewHolder {
@@ -27,6 +30,14 @@ public class ProfessionAdapter extends RecyclerView.Adapter<ProfessionAdapter.Pr
 
         }
 
+    }
+
+    private List<ProfessionItemViewModel> professionItemViewModelList;
+    private ProfessionActionInterface professionActionInterface;
+
+    public ProfessionAdapter(ProfessionActionInterface professionActionInterface) {
+        this.professionActionInterface = professionActionInterface;
+        professionItemViewModelList = new ArrayList<>();
     }
 
     @Override
