@@ -1,5 +1,7 @@
 package fil.android.project.mydofusprofessions.presentation.list;
 
+import android.util.Log;
+
 import fil.android.project.mydofusprofessions.data.api.model.ProfessionListResponse;
 import fil.android.project.mydofusprofessions.data.repository.search.search.ProfessionListDataRepository;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -29,12 +31,12 @@ public class ProfessionListPresenter implements ProfessionListContract.Presenter
 
                     @Override
                     public void onSuccess(ProfessionListResponse professionListResponse) {
-                        System.out.println("Taille de la liste des professions = " + professionListResponse.getProfessionList().size());
+                        Log.i("debug requete", "Taille de la liste des professions = " + professionListResponse.getProfessionList().size());
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        Log.e("erreur requete", e.getMessage());
                     }
                 });
 
