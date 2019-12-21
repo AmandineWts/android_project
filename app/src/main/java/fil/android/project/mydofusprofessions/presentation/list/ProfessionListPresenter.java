@@ -2,7 +2,9 @@ package fil.android.project.mydofusprofessions.presentation.list;
 
 import android.util.Log;
 
-import fil.android.project.mydofusprofessions.data.api.model.ProfessionListResponse;
+import java.util.List;
+
+import fil.android.project.mydofusprofessions.data.api.model.Profession;
 import fil.android.project.mydofusprofessions.data.repository.search.search.ProfessionListDataRepository;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableSingleObserver;
@@ -27,11 +29,11 @@ public class ProfessionListPresenter implements ProfessionListContract.Presenter
         professionListDataRepository.listProfessions()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new DisposableSingleObserver<ProfessionListResponse>() {
+                .subscribeWith(new DisposableSingleObserver<List<Profession>>() {
 
                     @Override
-                    public void onSuccess(ProfessionListResponse professionListResponse) {
-                        Log.i("debug requete", "Taille de la liste des professions = " + professionListResponse.getProfessionList().size());
+                    public void onSuccess(List<Profession> professionListResponse) {
+                        Log.i("debug requete", "Taille de la liste des professions = " + professionListResponse.size());
                     }
 
                     @Override

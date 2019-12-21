@@ -12,7 +12,7 @@ public class Profession {
 
     private String description;
 
-    private List<String> harvests;
+    private List<Harvest> harvests;
 
     private boolean isLearned;
 
@@ -51,11 +51,11 @@ public class Profession {
         this.description = description;
     }
 
-    public List<String> getHarvests() {
+    public List<Harvest> getHarvests() {
         return harvests;
     }
 
-    public void setHarvests(List<String> harvests) {
+    public void setHarvests(List<Harvest> harvests) {
         this.harvests = harvests;
     }
 

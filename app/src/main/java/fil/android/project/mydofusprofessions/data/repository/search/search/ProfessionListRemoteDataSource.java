@@ -1,6 +1,8 @@
 package fil.android.project.mydofusprofessions.data.repository.search.search;
 
-import fil.android.project.mydofusprofessions.data.api.model.ProfessionListResponse;
+import java.util.List;
+
+import fil.android.project.mydofusprofessions.data.api.model.Profession;
 import fil.android.project.mydofusprofessions.data.services.ProfessionService;
 import io.reactivex.Single;
 
@@ -12,7 +14,7 @@ public class ProfessionListRemoteDataSource {
         this.professionService = professionService;
     }
 
-    public Single<ProfessionListResponse> listProfessions() {
+    public Single<List<Profession>> listProfessions() {
         return professionService.getProfessions();
     }
 
