@@ -1,5 +1,6 @@
 package fil.android.project.mydofusprofessions.presentation.list.adapter;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -8,26 +9,48 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import fil.android.project.mydofusprofessions.R;
 
 public class ProfessionAdapter extends RecyclerView.Adapter<ProfessionAdapter.ProfessionViewHolder> {
 
     public static class ProfessionViewHolder extends RecyclerView.ViewHolder {
 
+        private View v;
+
         private TextView nameTextView;
 
         private ImageView iconImageView;
+
+        private ProfessionItemViewModel professionItemViewModel;
+
+        private ProfessionActionInterface professionActionInterface;
 
         // ajouter le isLearned
 
         ProfessionViewHolder(View v, final ProfessionActionInterface professionActionInterface) {
             super(v);
+            this.v = v;
+            this.nameTextView = v.findViewById(R.id.profession_name_textview);
+            this.iconImageView = v.findViewById(R.id.profession_icon_imageview);
+            this.professionActionInterface = professionActionInterface;
             // TODO
         }
 
         void bind(ProfessionItemViewModel professionItemViewModel) {
-
+            this.professionItemViewModel = professionItemViewModel;
+            nameTextView.setText(professionItemViewModel.getName());
+            Glide.with(v)
+                    .load(professionItemViewModel.getImgUrl())
+                    .centerCrop()
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .circleCrop()
+                    .into(iconImageView);
         }
 
     }
@@ -42,19 +65,23 @@ public class ProfessionAdapter extends RecyclerView.Adapter<ProfessionAdapter.Pr
 
     @Override
     public ProfessionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // TODO
-        return null;
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.profession_item, parent, false);
+        return new ProfessionViewHolder(v, professionActionInterface);
+    }
+
+    public void bindViewModels(List<ProfessionItemViewModel> professionItemViewModelList) {
+        this.professionItemViewModelList.addAll(professionItemViewModelList);
+        notifyDataSetChanged();
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProfessionViewHolder holder, int position) {
-        // TODO
+        holder.bind(professionItemViewModelList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        // TODO
-        return 0;
+        return professionItemViewModelList.size();
     }
 
 }

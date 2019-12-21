@@ -1,10 +1,14 @@
 package fil.android.project.mydofusprofessions.presentation.list;
 
+import java.util.List;
+
+import fil.android.project.mydofusprofessions.presentation.list.adapter.ProfessionItemViewModel;
+
 public interface ProfessionListContract {
 
     interface View {
 
-        // TODO
+        void displayProfessions(List<ProfessionItemViewModel> professionItemViewModelList);
     }
 
     interface Presenter {
