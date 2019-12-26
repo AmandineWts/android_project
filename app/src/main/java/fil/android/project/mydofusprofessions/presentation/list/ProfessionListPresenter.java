@@ -41,12 +41,11 @@ public class ProfessionListPresenter implements ProfessionListContract.Presenter
                     @Override
                     public void onSuccess(List<Profession> professionListResponse) {
                         professionsListContractView.displayProfessions(professionToItemViewModelMapper.map(professionListResponse));
-                        Log.i("debug requete", "Taille de la liste des professions = " + professionListResponse.size());
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e("erreur requete", e.getMessage());
+                        Log.e("Erreur de requête", e.getMessage());
                     }
                 });
 
