@@ -24,7 +24,7 @@ import fil.android.project.mydofusprofessions.presentation.list.mapper.Professio
 
 public class ListFragment extends Fragment implements ProfessionActionInterface, ProfessionListContract.View {
 
-    public static final String TAB_NAME = "Professions list";
+    public static final String TAB_NAME = "Liste des métiers";
     private View rootView;
     private RecyclerView recyclerView;
     private ProfessionAdapter professionAdapter;
