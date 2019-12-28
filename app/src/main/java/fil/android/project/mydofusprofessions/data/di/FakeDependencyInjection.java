@@ -27,6 +27,7 @@ public class FakeDependencyInjection {
     private static Context applicationContext;
 
     private static ProfessionService professionService;
+    private static ProfessionDetailDataRepository professionDetailDataRepository;
     private static ProfessionListDataRepository professionListDataRepository;
 
     private static MyProfessionsDatabase myProfessionsDatabase;
@@ -41,6 +42,14 @@ public class FakeDependencyInjection {
             professionListDataRepository = new ProfessionListDataRepository(professionListRemoteDataSource, professionListLocaleDataSource);
         }
         return professionListDataRepository;
+    }
+
+    public static ProfessionDetailDataRepository getProfessionDetailDataRepository() {
+        if(professionDetailDataRepository == null) {
+            ProfessionDetailRemoteDataSource professionDetailRemoteDataSource = new ProfessionDetailRemoteDataSource(getProfessionService());
+            professionDetailDataRepository = new ProfessionDetailDataRepository(professionDetailRemoteDataSource);
+        }
+        return professionDetailDataRepository;
     }
 
     public static ProfessionService getProfessionService() {

@@ -28,7 +28,7 @@ public class ListFragment extends Fragment implements ProfessionActionInterface,
     private View rootView;
     private RecyclerView recyclerView;
     private ProfessionAdapter professionAdapter;
-    ProfessionListPresenter professionListPresenter;
+    private ProfessionListPresenter professionListPresenter;
 
     private ListFragment() {
     }
