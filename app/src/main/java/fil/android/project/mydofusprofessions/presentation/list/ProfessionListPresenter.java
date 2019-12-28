@@ -8,7 +8,7 @@ import androidx.annotation.RequiresApi;
 import java.util.List;
 
 import fil.android.project.mydofusprofessions.data.api.model.Profession;
-import fil.android.project.mydofusprofessions.data.repository.search.search.ProfessionListDataRepository;
+import fil.android.project.mydofusprofessions.data.repository.list.ProfessionListDataRepository;
 import fil.android.project.mydofusprofessions.presentation.list.mapper.ProfessionToItemViewModelMapper;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableSingleObserver;

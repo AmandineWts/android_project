@@ -1,4 +1,4 @@
-package fil.android.project.mydofusprofessions.data.repository.search.search;
+package fil.android.project.mydofusprofessions.data.repository.list;
 
 import fil.android.project.mydofusprofessions.data.database.MyProfessionsDatabase;
 

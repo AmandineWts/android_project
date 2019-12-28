@@ -8,9 +8,11 @@ import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.gson.Gson;
 
 import fil.android.project.mydofusprofessions.data.database.MyProfessionsDatabase;
-import fil.android.project.mydofusprofessions.data.repository.search.search.ProfessionListDataRepository;
-import fil.android.project.mydofusprofessions.data.repository.search.search.ProfessionListLocaleDataSource;
-import fil.android.project.mydofusprofessions.data.repository.search.search.ProfessionListRemoteDataSource;
+import fil.android.project.mydofusprofessions.data.repository.detail.ProfessionDetailDataRepository;
+import fil.android.project.mydofusprofessions.data.repository.detail.ProfessionDetailRemoteDataSource;
+import fil.android.project.mydofusprofessions.data.repository.list.ProfessionListDataRepository;
+import fil.android.project.mydofusprofessions.data.repository.list.ProfessionListLocaleDataSource;
+import fil.android.project.mydofusprofessions.data.repository.list.ProfessionListRemoteDataSource;
 import fil.android.project.mydofusprofessions.data.services.ProfessionService;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
