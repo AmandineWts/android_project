@@ -1,10 +1,13 @@
 package fil.android.project.mydofusprofessions.presentation;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
 import fil.android.project.mydofusprofessions.R;
 import fil.android.project.mydofusprofessions.data.api.model.Profession;
@@ -16,6 +19,8 @@ public class ProfessionDetailActivity extends AppCompatActivity implements Profe
 
     private ProfessionDetailPresenter professionDetailPresenter;
     private TextView nameTextView;
+    private TextView descriptionTextView;
+    private ImageView logoImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +39,17 @@ public class ProfessionDetailActivity extends AppCompatActivity implements Profe
 
     private void setupViews() {
         this.nameTextView = findViewById(R.id.profession_detail_name_textview);
+        this.descriptionTextView = findViewById(R.id.profession_detail_description_textview);
+        this.logoImageView = findViewById(R.id.profession_detail_logo_imageview);
     }
 
     @Override
     public void displayProfessionWithDetails(Profession profession) {
         nameTextView.setText(profession.getName());
+        descriptionTextView.setText(profession.getDescription());
+        Glide.with(findViewById(R.id.detail_card_view))
+                .load(profession.getImgUrl())
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(logoImageView);
     }
 }
