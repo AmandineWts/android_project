@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import fil.android.project.mydofusprofessions.R;
+import fil.android.project.mydofusprofessions.presentation.list.fragment.LearnedListFragment;
 import fil.android.project.mydofusprofessions.presentation.list.fragment.ListFragment;
 
 public class ProfessionsDisplayActivity extends AppCompatActivity {
@@ -26,8 +27,7 @@ public class ProfessionsDisplayActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.tab_viewpager);
 
         final ListFragment searchFragment = ListFragment.newInstance();
-        final ListFragment searchFragment2 = ListFragment.newInstance();
-        //TODO ajouter 2e fragment
+        final LearnedListFragment learnedListFragment = LearnedListFragment.newInstance();
 
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -35,8 +35,7 @@ public class ProfessionsDisplayActivity extends AppCompatActivity {
                 if (position == 0) {
                     return searchFragment;
                 }
-                //TODO changer
-                return searchFragment2;
+                return learnedListFragment;
             }
 
             @Override
@@ -44,8 +43,7 @@ public class ProfessionsDisplayActivity extends AppCompatActivity {
                 if (position == 0) {
                     return ListFragment.TAB_NAME;
                 }
-                //TODO changer
-                return ListFragment.TAB_NAME;
+                return LearnedListFragment.TAB_NAME;
             }
 
             @Override

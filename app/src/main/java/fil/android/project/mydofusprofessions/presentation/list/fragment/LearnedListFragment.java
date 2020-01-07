@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,54 +22,53 @@ import fil.android.project.mydofusprofessions.presentation.list.adapter.Professi
 import fil.android.project.mydofusprofessions.presentation.list.adapter.ProfessionItemViewModel;
 import fil.android.project.mydofusprofessions.presentation.list.mapper.ProfessionToItemViewModelMapper;
 
-public class ListFragment extends Fragment implements ProfessionActionInterface, ProfessionListContract.View {
+public class LearnedListFragment extends Fragment implements ProfessionActionInterface, ProfessionListContract.View {
 
-    public static final String TAB_NAME = "Liste des métiers";
+    public static final String TAB_NAME = "Mes métiers appris";
     private View rootView;
     private RecyclerView recyclerView;
     private ProfessionAdapter professionAdapter;
     private ProfessionListPresenter professionListPresenter;
 
-    private ListFragment() {
+    private LearnedListFragment() {
     }
 
-    public static ListFragment newInstance() {
-        return new ListFragment();
+    public static LearnedListFragment newInstance() {
+        return new LearnedListFragment();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        rootView = inflater.inflate(R.layout.fragment_list, container, false);
+        rootView = inflater.inflate(R.layout.fragment_learned_list, container, false);
         return rootView;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        setupRecyclerView();
+        /*setupRecyclerView();
         professionListPresenter = new ProfessionListPresenter(FakeDependencyInjection.getProfessionListDataRepository(), new ProfessionToItemViewModelMapper());
         professionListPresenter.attachView(this);
-        professionListPresenter.listProfessions();
+        professionListPresenter.listProfessions();*/
     }
 
     private void setupRecyclerView() {
-        recyclerView = rootView.findViewById(R.id.recycler_view);
+   /*     recyclerView = rootView.findViewById(R.id.recycler_view);
         professionAdapter = new ProfessionAdapter(this);
         recyclerView.setAdapter(professionAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        //recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));*/
     }
 
 
     @Override
     public void onLearnedToggle(String professionId, boolean isLearned) {
-        professionListPresenter.addProfessionAsLearned(professionId);
+        // TODO
     }
 
     @Override
     public void displayProfessions(List<ProfessionItemViewModel> professionItemViewModelList) {
-        professionAdapter.bindViewModels(professionItemViewModelList);
+        //professionAdapter.bindViewModels(professionItemViewModelList);
     }
 }

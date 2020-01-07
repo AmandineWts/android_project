@@ -32,11 +32,11 @@ public class ProfessionAdapter extends RecyclerView.Adapter<ProfessionAdapter.Pr
 
         private CardView itemCardView;
 
+        private ImageView isLearnedImageView;
+
         private ProfessionItemViewModel professionItemViewModel;
 
         private ProfessionActionInterface professionActionInterface;
-
-        // ajouter le isLearned
 
         ProfessionViewHolder(View v, final ProfessionActionInterface professionActionInterface) {
             super(v);
@@ -44,18 +44,25 @@ public class ProfessionAdapter extends RecyclerView.Adapter<ProfessionAdapter.Pr
             this.nameTextView = v.findViewById(R.id.profession_name_textview);
             this.iconImageView = v.findViewById(R.id.profession_icon_imageview);
             this.itemCardView = v.findViewById(R.id.item_card_view);
+            this.isLearnedImageView = v.findViewById(R.id.star_profession_learned);
             this.professionActionInterface = professionActionInterface;
             setupListeners();
             // TODO
         }
 
         private void setupListeners() {
-            this.itemCardView.setOnClickListener(new View.OnClickListener() {
+ /*           this.itemCardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), ProfessionDetailActivity.class);
                     intent.putExtra("profession_id", professionItemViewModel.getId());
                     v.getContext().startActivity(intent);
+                }
+            });*/
+            this.isLearnedImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    professionActionInterface.onLearnedToggle(professionItemViewModel.getId(), false);
                 }
             });
         }

@@ -13,6 +13,7 @@ import fil.android.project.mydofusprofessions.data.repository.detail.ProfessionD
 import fil.android.project.mydofusprofessions.data.repository.list.ProfessionListDataRepository;
 import fil.android.project.mydofusprofessions.data.repository.list.ProfessionListLocaleDataSource;
 import fil.android.project.mydofusprofessions.data.repository.list.ProfessionListRemoteDataSource;
+import fil.android.project.mydofusprofessions.data.repository.list.ProfessionToProfessionEntityMapper;
 import fil.android.project.mydofusprofessions.data.services.ProfessionService;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -39,7 +40,8 @@ public class FakeDependencyInjection {
         if(professionListDataRepository == null) {
             ProfessionListRemoteDataSource professionListRemoteDataSource = new ProfessionListRemoteDataSource(getProfessionService());
             ProfessionListLocaleDataSource professionListLocaleDataSource = new ProfessionListLocaleDataSource(getMyProfessionsDatabase());
-            professionListDataRepository = new ProfessionListDataRepository(professionListRemoteDataSource, professionListLocaleDataSource);
+            ProfessionToProfessionEntityMapper professionToProfessionEntityMapper = new ProfessionToProfessionEntityMapper();
+            professionListDataRepository = new ProfessionListDataRepository(professionListRemoteDataSource, professionListLocaleDataSource, professionToProfessionEntityMapper);
         }
         return professionListDataRepository;
     }

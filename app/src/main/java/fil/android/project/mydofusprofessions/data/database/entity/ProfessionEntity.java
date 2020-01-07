@@ -5,7 +5,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName="items")
+@Entity
 public class ProfessionEntity {
 
     @PrimaryKey
@@ -13,4 +13,12 @@ public class ProfessionEntity {
     @NonNull
     public String ankamaId;
 
+    @NonNull
+    public String getAnkamaId() {
+        return ankamaId;
+    }
+
+    public void setAnkamaId(@NonNull String ankamaId) {
+        this.ankamaId = ankamaId;
+    }
 }

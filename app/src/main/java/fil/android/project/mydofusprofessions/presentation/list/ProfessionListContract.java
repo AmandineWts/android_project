@@ -17,6 +17,8 @@ public interface ProfessionListContract {
 
         void attachView(View view);
 
+        void addProfessionAsLearned(String professionId);
+
     }
 
 }

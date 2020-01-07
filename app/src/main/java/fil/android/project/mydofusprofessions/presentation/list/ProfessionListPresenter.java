@@ -11,6 +11,8 @@ import fil.android.project.mydofusprofessions.data.api.model.Profession;
 import fil.android.project.mydofusprofessions.data.repository.list.ProfessionListDataRepository;
 import fil.android.project.mydofusprofessions.presentation.list.mapper.ProfessionToItemViewModelMapper;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
@@ -19,10 +21,12 @@ public class ProfessionListPresenter implements ProfessionListContract.Presenter
     private ProfessionListContract.View professionsListContractView;
     private ProfessionListDataRepository professionListDataRepository;
     private ProfessionToItemViewModelMapper professionToItemViewModelMapper;
+    private CompositeDisposable compositeDisposable;
 
     public ProfessionListPresenter(ProfessionListDataRepository professionListDataRepository, ProfessionToItemViewModelMapper professionToItemViewModelMapper) {
         this.professionListDataRepository = professionListDataRepository;
         this.professionToItemViewModelMapper = professionToItemViewModelMapper;
+        this.compositeDisposable = new CompositeDisposable();
     }
 
     @Override
@@ -51,4 +55,21 @@ public class ProfessionListPresenter implements ProfessionListContract.Presenter
 
     }
 
+    @Override
+    public void addProfessionAsLearned(String professionId) {
+        compositeDisposable.add(professionListDataRepository.markProfessionAsLearned(professionId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableCompletableObserver() {
+                    @Override
+                    public void onComplete() {
+                        System.out.println("Métier bien ajouté aux favoris !");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                }));
+    }
 }
