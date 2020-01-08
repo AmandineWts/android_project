@@ -14,13 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import fil.android.project.mydofusprofessions.R;
-import fil.android.project.mydofusprofessions.data.di.FakeDependencyInjection;
 import fil.android.project.mydofusprofessions.presentation.list.ProfessionListContract;
 import fil.android.project.mydofusprofessions.presentation.list.ProfessionListPresenter;
 import fil.android.project.mydofusprofessions.presentation.list.adapter.ProfessionActionInterface;
 import fil.android.project.mydofusprofessions.presentation.list.adapter.ProfessionAdapter;
 import fil.android.project.mydofusprofessions.presentation.list.adapter.ProfessionItemViewModel;
-import fil.android.project.mydofusprofessions.presentation.list.mapper.ProfessionToItemViewModelMapper;
 
 public class LearnedListFragment extends Fragment implements ProfessionActionInterface, ProfessionListContract.View {
 
@@ -74,6 +72,11 @@ public class LearnedListFragment extends Fragment implements ProfessionActionInt
 
     @Override
     public void onProfessionAddedAsLearned() {
+
+    }
+
+    @Override
+    public void onProfessionRemovedFromLearned() {
 
     }
 }

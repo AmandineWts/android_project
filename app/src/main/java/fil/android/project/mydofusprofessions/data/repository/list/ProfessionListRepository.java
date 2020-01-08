@@ -11,4 +11,6 @@ public interface ProfessionListRepository {
     Single<List<Profession>> listProfessions();
 
     Completable markProfessionAsLearned(String professionId);
+
+    Completable unmarkProfessionAsLearned(String professionId);
 }

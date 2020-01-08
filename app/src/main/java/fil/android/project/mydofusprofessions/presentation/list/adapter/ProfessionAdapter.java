@@ -62,7 +62,7 @@ public class ProfessionAdapter extends RecyclerView.Adapter<ProfessionAdapter.Pr
             this.isLearnedImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    professionActionInterface.onLearnedToggle(professionItemViewModel.getId(), false);
+                    professionActionInterface.onLearnedToggle(professionItemViewModel.getId(), professionItemViewModel.isLearned());
                 }
             });
         }
@@ -70,6 +70,9 @@ public class ProfessionAdapter extends RecyclerView.Adapter<ProfessionAdapter.Pr
         void bind(ProfessionItemViewModel professionItemViewModel) {
             this.professionItemViewModel = professionItemViewModel;
             nameTextView.setText(professionItemViewModel.getName());
+            if(professionItemViewModel.isLearned()) {
+                isLearnedImageView.setImageResource(R.drawable.learned_logo);
+            }
             Glide.with(v)
                     .load(professionItemViewModel.getImgUrl())
                     .centerCrop()

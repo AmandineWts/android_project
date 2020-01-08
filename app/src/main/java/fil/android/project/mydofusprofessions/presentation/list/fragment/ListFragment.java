@@ -67,7 +67,11 @@ public class ListFragment extends Fragment implements ProfessionActionInterface,
 
     @Override
     public void onLearnedToggle(String professionId, boolean isLearned) {
-        professionListPresenter.addProfessionAsLearned(professionId);
+        if(isLearned) {
+            professionListPresenter.removeProfessionFromLearned(professionId);
+        } else {
+            professionListPresenter.addProfessionAsLearned(professionId);
+        }
     }
 
     @Override
@@ -79,5 +83,11 @@ public class ListFragment extends Fragment implements ProfessionActionInterface,
     public void onProfessionAddedAsLearned() {
         ImageView isLearnedImageView = rootView.findViewById(R.id.star_profession_not_learned);
         isLearnedImageView.setImageResource(R.drawable.learned_logo);
+    }
+
+    @Override
+    public void onProfessionRemovedFromLearned() {
+        ImageView isLearnedImageView = rootView.findViewById(R.id.star_profession_not_learned);
+        isLearnedImageView.setImageResource(R.drawable.not_learned_logo);
     }
 }

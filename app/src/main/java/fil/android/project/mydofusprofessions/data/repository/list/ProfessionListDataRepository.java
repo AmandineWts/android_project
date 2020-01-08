@@ -58,5 +58,8 @@ public class ProfessionListDataRepository implements ProfessionListRepository {
                 });
     }
 
-
+    @Override
+    public Completable unmarkProfessionAsLearned(String professionId) {
+        return professionListLocaleDataSource.unmarkProfessionAsLearned(professionId);
+    }
 }

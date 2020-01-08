@@ -68,7 +68,25 @@ public class ProfessionListPresenter implements ProfessionListContract.Presenter
 
                     @Override
                     public void onError(Throwable e) {
+                        Log.e("ERREUR = ", e.getMessage());
+                    }
+                }));
+    }
 
+    @Override
+    public void removeProfessionFromLearned(String professionId) {
+        compositeDisposable.add(professionListDataRepository.unmarkProfessionAsLearned(professionId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableCompletableObserver() {
+                    @Override
+                    public void onComplete() {
+                        professionsListContractView.onProfessionRemovedFromLearned();
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("ERREUR = ", e.getMessage());
                     }
                 }));
     }
