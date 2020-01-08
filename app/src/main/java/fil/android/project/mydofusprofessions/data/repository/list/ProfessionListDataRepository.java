@@ -4,6 +4,9 @@ import java.util.List;
 
 import fil.android.project.mydofusprofessions.data.api.model.Profession;
 import fil.android.project.mydofusprofessions.data.database.entity.ProfessionEntity;
+import fil.android.project.mydofusprofessions.data.repository.list.locale.ProfessionListLocaleDataSource;
+import fil.android.project.mydofusprofessions.data.repository.list.mapper.ProfessionToProfessionEntityMapper;
+import fil.android.project.mydofusprofessions.data.repository.list.remote.ProfessionListRemoteDataSource;
 import io.reactivex.Completable;
 import io.reactivex.CompletableSource;
 import io.reactivex.Single;

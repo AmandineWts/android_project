@@ -1,4 +1,4 @@
-package fil.android.project.mydofusprofessions.data.repository.list;
+package fil.android.project.mydofusprofessions.data.repository.list.remote;
 
 import java.util.List;
 

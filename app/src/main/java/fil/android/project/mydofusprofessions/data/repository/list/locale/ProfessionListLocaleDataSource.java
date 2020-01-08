@@ -1,4 +1,4 @@
-package fil.android.project.mydofusprofessions.data.repository.list;
+package fil.android.project.mydofusprofessions.data.repository.list.locale;
 
 import java.util.List;
 
@@ -17,6 +17,10 @@ public class ProfessionListLocaleDataSource {
 
     public Completable markProfessionAsLearned(ProfessionEntity professionEntity) {
         return myProfessionsDatabase.itemDao().markProfessionAsLearned(professionEntity);
+    }
+
+    public Completable unmarkProfessionAsLearned(String professionId) {
+        return myProfessionsDatabase.itemDao().unmarkProfessionAsLearned(professionId);
     }
 
     public Single<List<String>> getLearnedProfessionIdList() {

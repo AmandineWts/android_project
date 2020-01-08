@@ -11,9 +11,9 @@ import fil.android.project.mydofusprofessions.data.database.MyProfessionsDatabas
 import fil.android.project.mydofusprofessions.data.repository.detail.ProfessionDetailDataRepository;
 import fil.android.project.mydofusprofessions.data.repository.detail.ProfessionDetailRemoteDataSource;
 import fil.android.project.mydofusprofessions.data.repository.list.ProfessionListDataRepository;
-import fil.android.project.mydofusprofessions.data.repository.list.ProfessionListLocaleDataSource;
-import fil.android.project.mydofusprofessions.data.repository.list.ProfessionListRemoteDataSource;
-import fil.android.project.mydofusprofessions.data.repository.list.ProfessionToProfessionEntityMapper;
+import fil.android.project.mydofusprofessions.data.repository.list.locale.ProfessionListLocaleDataSource;
+import fil.android.project.mydofusprofessions.data.repository.list.remote.ProfessionListRemoteDataSource;
+import fil.android.project.mydofusprofessions.data.repository.list.mapper.ProfessionToProfessionEntityMapper;
 import fil.android.project.mydofusprofessions.data.services.ProfessionService;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
