@@ -9,6 +9,8 @@ public interface ProfessionListContract {
     interface View {
 
         void displayProfessions(List<ProfessionItemViewModel> professionItemViewModelList);
+
+        void onProfessionAddedAsLearned();
     }
 
     interface Presenter {

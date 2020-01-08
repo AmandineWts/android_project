@@ -44,7 +44,7 @@ public class ProfessionAdapter extends RecyclerView.Adapter<ProfessionAdapter.Pr
             this.nameTextView = v.findViewById(R.id.profession_name_textview);
             this.iconImageView = v.findViewById(R.id.profession_icon_imageview);
             this.itemCardView = v.findViewById(R.id.item_card_view);
-            this.isLearnedImageView = v.findViewById(R.id.star_profession_learned);
+            this.isLearnedImageView = v.findViewById(R.id.star_profession_not_learned);
             this.professionActionInterface = professionActionInterface;
             setupListeners();
             // TODO

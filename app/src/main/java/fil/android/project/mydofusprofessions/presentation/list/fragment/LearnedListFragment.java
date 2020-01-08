@@ -71,4 +71,9 @@ public class LearnedListFragment extends Fragment implements ProfessionActionInt
     public void displayProfessions(List<ProfessionItemViewModel> professionItemViewModelList) {
         //professionAdapter.bindViewModels(professionItemViewModelList);
     }
+
+    @Override
+    public void onProfessionAddedAsLearned() {
+
+    }
 }

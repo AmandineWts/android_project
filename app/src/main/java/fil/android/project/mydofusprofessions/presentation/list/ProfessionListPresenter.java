@@ -63,7 +63,7 @@ public class ProfessionListPresenter implements ProfessionListContract.Presenter
                 .subscribeWith(new DisposableCompletableObserver() {
                     @Override
                     public void onComplete() {
-                        System.out.println("Métier bien ajouté aux favoris !");
+                        professionsListContractView.onProfessionAddedAsLearned();
                     }
 
                     @Override

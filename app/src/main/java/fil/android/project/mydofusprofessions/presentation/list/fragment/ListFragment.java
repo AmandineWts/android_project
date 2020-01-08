@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -72,5 +73,11 @@ public class ListFragment extends Fragment implements ProfessionActionInterface,
     @Override
     public void displayProfessions(List<ProfessionItemViewModel> professionItemViewModelList) {
         professionAdapter.bindViewModels(professionItemViewModelList);
+    }
+
+    @Override
+    public void onProfessionAddedAsLearned() {
+        ImageView isLearnedImageView = rootView.findViewById(R.id.star_profession_not_learned);
+        isLearnedImageView.setImageResource(R.drawable.learned_logo);
     }
 }

@@ -30,7 +30,7 @@
             tools:text="My profession name"/>
 
         <ImageView
-            android:id="@+id/star_profession_learned"
+            android:id="@+id/star_profession_not_learned"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/not_learned_logo"

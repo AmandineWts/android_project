@@ -1,8 +1,11 @@
 package fil.android.project.mydofusprofessions.data.repository.list;
 
+import java.util.List;
+
 import fil.android.project.mydofusprofessions.data.database.MyProfessionsDatabase;
 import fil.android.project.mydofusprofessions.data.database.entity.ProfessionEntity;
 import io.reactivex.Completable;
+import io.reactivex.Single;
 
 public class ProfessionListLocaleDataSource {
 
@@ -14,6 +17,10 @@ public class ProfessionListLocaleDataSource {
 
     public Completable markProfessionAsLearned(ProfessionEntity professionEntity) {
         return myProfessionsDatabase.itemDao().markProfessionAsLearned(professionEntity);
+    }
+
+    public Single<List<String>> getLearnedProfessionIdList() {
+        return myProfessionsDatabase.itemDao().getLearnedProfessionIdList();
     }
 
 }

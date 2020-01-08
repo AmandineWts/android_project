@@ -7,6 +7,7 @@ import fil.android.project.mydofusprofessions.data.database.entity.ProfessionEnt
 import io.reactivex.Completable;
 import io.reactivex.CompletableSource;
 import io.reactivex.Single;
+import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Function;
 
 public class ProfessionListDataRepository implements ProfessionListRepository {
@@ -21,8 +22,20 @@ public class ProfessionListDataRepository implements ProfessionListRepository {
         this.professionToProfessionEntityMapper = professionToProfessionEntityMapper;
     }
 
+    @Override
     public Single<List<Profession>> listProfessions() {
-        return professionListRemoteDataSource.listProfessions();
+        return professionListRemoteDataSource.listProfessions()
+                .zipWith(professionListLocaleDataSource.getLearnedProfessionIdList(), new BiFunction<List<Profession>, List<String>, List<Profession>>() {
+            @Override
+            public List<Profession> apply(List<Profession> professionList, List<String> ids) {
+                for(Profession profession : professionList) {
+                    if(ids.contains(profession.getAnkamaId())) {
+                        profession.setLearned(true);
+                    }
+                }
+                return professionList;
+            }
+        });
     }
 
     @Override
@@ -41,4 +54,6 @@ public class ProfessionListDataRepository implements ProfessionListRepository {
                     }
                 });
     }
+
+
 }
