@@ -22,6 +22,7 @@ public class ProfessionToItemViewModelMapper {
         professionItemViewModel.setName(profession.getName());
         professionItemViewModel.setImgUrl(profession.getImgUrl());
         professionItemViewModel.setId(profession.getAnkamaId());
+        professionItemViewModel.setLearned(profession.isLearned());
         return professionItemViewModel;
     }
 

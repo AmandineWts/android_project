@@ -27,10 +27,15 @@ import fil.android.project.mydofusprofessions.presentation.list.mapper.Professio
 public class ListFragment extends Fragment implements ProfessionActionInterface, ProfessionListContract.View {
 
     public static final String TAB_NAME = "Liste des métiers";
+
+    private static final String GRID_LAYOUT = "Grid layout";
+    private static final String LINEAR_LAYOUT = "Linear layout";
+
     private View rootView;
     private RecyclerView recyclerView;
     private ProfessionAdapter professionAdapter;
     private ProfessionListPresenter professionListPresenter;
+    private String layoutManagerType;
 
     private ListFragment() {
     }
@@ -61,7 +66,17 @@ public class ListFragment extends Fragment implements ProfessionActionInterface,
         professionAdapter = new ProfessionAdapter(this);
         recyclerView.setAdapter(professionAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        //recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+        layoutManagerType = LINEAR_LAYOUT;
+    }
+
+    public void updateLayoutDisplay() {
+        if(layoutManagerType.equals(LINEAR_LAYOUT)) {
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+            layoutManagerType = GRID_LAYOUT;
+        } else {
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            layoutManagerType = LINEAR_LAYOUT;
+        }
     }
 
 

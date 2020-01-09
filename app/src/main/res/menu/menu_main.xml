@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/menu_main"
+    android:layout_height="48dp"
+    android:layout_width="match_parent">
+
+    <item
+        android:id="@+id/icon_layout_handler"
+        android:icon="@drawable/grid_layout"
+        app:showAsAction="ifRoom"
+        android:title="Layout handler">
+    </item>
+</menu>
