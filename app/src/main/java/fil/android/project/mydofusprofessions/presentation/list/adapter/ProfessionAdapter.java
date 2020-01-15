@@ -47,18 +47,17 @@ public class ProfessionAdapter extends RecyclerView.Adapter<ProfessionAdapter.Pr
             this.isLearnedImageView = v.findViewById(R.id.star_profession_not_learned);
             this.professionActionInterface = professionActionInterface;
             setupListeners();
-            // TODO
         }
 
         private void setupListeners() {
- /*           this.itemCardView.setOnClickListener(new View.OnClickListener() {
+            this.itemCardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(v.getContext(), ProfessionDetailActivity.class);
                     intent.putExtra("profession_id", professionItemViewModel.getId());
                     v.getContext().startActivity(intent);
                 }
-            });*/
+            });
             this.isLearnedImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -77,7 +76,6 @@ public class ProfessionAdapter extends RecyclerView.Adapter<ProfessionAdapter.Pr
                     .load(professionItemViewModel.getImgUrl())
                     .centerCrop()
                     .transition(DrawableTransitionOptions.withCrossFade())
-                    .circleCrop()
                     .into(iconImageView);
         }
 
