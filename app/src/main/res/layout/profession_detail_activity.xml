@@ -1,44 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/detail_card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
- >
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+    android:layout_margin="8dp"
+    >
     <ImageView
         android:id="@+id/profession_detail_logo_imageview"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintRight_toLeftOf="@id/profession_detail_name_textview"
+        app:layout_constraintBottom_toTopOf="@id/profession_detail_description_textview"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         tools:src="@drawable/ic_image_black_24dp"/>
 
     <TextView
         android:id="@+id/profession_detail_name_textview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
+        android:layout_marginLeft="30dp"
+        android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/profession_detail_description_textview"
         app:layout_constraintLeft_toRightOf="@id/profession_detail_logo_imageview"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
         tools:text="Profession name" />
 
     <TextView
         android:id="@+id/profession_detail_description_textview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
-        app:layout_constraintLeft_toLeftOf="@id/profession_detail_name_textview"
-        app:layout_constraintTop_toBottomOf="@id/profession_detail_name_textview"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profession_detail_logo_imageview"
         app:layout_constraintVertical_chainStyle="packed"
         tools:text="Profession description"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
