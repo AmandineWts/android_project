@@ -38,6 +38,7 @@ public class ProfessionsDisplayActivity extends AppCompatActivity {
         if(item.getItemId() == R.id.icon_layout_handler) {
             changeIconDisplayed(item);
             listFragment.updateLayoutDisplay();
+            learnedListFragment.updateLayoutDisplay();
             return true;
         }
         return super.onOptionsItemSelected(item);

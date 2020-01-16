@@ -21,6 +21,8 @@ public interface ProfessionListContract {
 
         void attachView(View view);
 
+        void listLearnedProfessions();
+
         void addProfessionAsLearned(String professionId);
 
         void removeProfessionFromLearned(String professionId);

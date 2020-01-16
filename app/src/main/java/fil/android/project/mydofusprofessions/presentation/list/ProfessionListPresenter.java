@@ -56,6 +56,26 @@ public class ProfessionListPresenter implements ProfessionListContract.Presenter
     }
 
     @Override
+    public void listLearnedProfessions() {
+        professionListDataRepository.listLearnedProfessions()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<List<Profession>>() {
+
+                    @RequiresApi(api = Build.VERSION_CODES.N)
+                    @Override
+                    public void onSuccess(List<Profession> professionListResponse) {
+                        professionsListContractView.displayProfessions(professionToItemViewModelMapper.map(professionListResponse));
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e("Erreur de requête", e.getMessage());
+                    }
+                });
+    }
+
+        @Override
     public void addProfessionAsLearned(String professionId) {
         compositeDisposable.add(professionListDataRepository.markProfessionAsLearned(professionId)
                 .subscribeOn(Schedulers.io())
