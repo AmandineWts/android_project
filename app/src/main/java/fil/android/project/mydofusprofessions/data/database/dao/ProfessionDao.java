@@ -21,4 +21,5 @@ public interface ProfessionDao {
 
     @Query("SELECT ankama_id from professionentity")
     Single<List<String>> getLearnedProfessionIdList();
+
 }

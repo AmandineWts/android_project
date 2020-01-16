@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -82,11 +81,11 @@ public class LearnedListFragment extends Fragment implements ProfessionActionInt
 
     @Override
     public void onLearnedToggle(String professionId, boolean isLearned) {
-        if(isLearned) {
+       /* if(isLearned) {
             professionListPresenter.removeProfessionFromLearned(professionId);
         } else {
             professionListPresenter.addProfessionAsLearned(professionId);
-        }
+        }*/
     }
 
     @Override
@@ -96,13 +95,13 @@ public class LearnedListFragment extends Fragment implements ProfessionActionInt
 
     @Override
     public void onProfessionAddedAsLearned() {
-        ImageView isLearnedImageView = rootView.findViewById(R.id.star_profession_not_learned);
-        isLearnedImageView.setImageResource(R.drawable.learned_logo);
+        /*ImageView isLearnedImageView = rootView.findViewById(R.id.star_profession_not_learned);
+        isLearnedImageView.setImageResource(R.drawable.learned_logo);*/
     }
 
     @Override
     public void onProfessionRemovedFromLearned() {
-        ImageView isLearnedImageView = rootView.findViewById(R.id.star_profession_not_learned);
-        isLearnedImageView.setImageResource(R.drawable.not_learned_logo);
+       /* ImageView isLearnedImageView = rootView.findViewById(R.id.star_profession_not_learned);
+        isLearnedImageView.setImageResource(R.drawable.not_learned_logo);*/
     }
 }

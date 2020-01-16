@@ -75,7 +75,7 @@ public class ProfessionListPresenter implements ProfessionListContract.Presenter
                 });
     }
 
-        @Override
+    @Override
     public void addProfessionAsLearned(String professionId) {
         compositeDisposable.add(professionListDataRepository.markProfessionAsLearned(professionId)
                 .subscribeOn(Schedulers.io())

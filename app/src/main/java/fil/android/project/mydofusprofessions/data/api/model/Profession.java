@@ -12,8 +12,6 @@ public class Profession {
 
     private String description;
 
-    private List<Harvest> harvests;
-
     private boolean isLearned;
 
     private int personalLvl;
@@ -49,14 +47,6 @@ public class Profession {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public List<Harvest> getHarvests() {
-        return harvests;
-    }
-
-    public void setHarvests(List<Harvest> harvests) {
-        this.harvests = harvests;
     }
 
     public boolean isLearned() {

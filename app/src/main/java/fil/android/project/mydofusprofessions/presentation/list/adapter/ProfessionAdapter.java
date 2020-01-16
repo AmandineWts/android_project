@@ -44,7 +44,7 @@ public class ProfessionAdapter extends RecyclerView.Adapter<ProfessionAdapter.Pr
             this.nameTextView = v.findViewById(R.id.profession_name_textview);
             this.iconImageView = v.findViewById(R.id.profession_icon_imageview);
             this.itemCardView = v.findViewById(R.id.item_card_view);
-            this.isLearnedImageView = v.findViewById(R.id.star_profession_not_learned);
+            //this.isLearnedImageView = v.findViewById(R.id.star_profession_not_learned);
             this.professionActionInterface = professionActionInterface;
             setupListeners();
         }
@@ -58,20 +58,20 @@ public class ProfessionAdapter extends RecyclerView.Adapter<ProfessionAdapter.Pr
                     v.getContext().startActivity(intent);
                 }
             });
-            this.isLearnedImageView.setOnClickListener(new View.OnClickListener() {
+            /*this.isLearnedImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     professionActionInterface.onLearnedToggle(professionItemViewModel.getId(), professionItemViewModel.isLearned());
                 }
-            });
+            });*/
         }
 
         void bind(ProfessionItemViewModel professionItemViewModel) {
             this.professionItemViewModel = professionItemViewModel;
             nameTextView.setText(professionItemViewModel.getName());
-            if(professionItemViewModel.isLearned()) {
+           /* if(professionItemViewModel.isLearned()) {
                 isLearnedImageView.setImageResource(R.drawable.learned_logo);
-            }
+            }*/
             Glide.with(v)
                     .load(professionItemViewModel.getImgUrl())
                     .centerCrop()

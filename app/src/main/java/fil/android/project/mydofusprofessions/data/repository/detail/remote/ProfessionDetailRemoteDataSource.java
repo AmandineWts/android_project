@@ -1,4 +1,4 @@
-package fil.android.project.mydofusprofessions.data.repository.detail;
+package fil.android.project.mydofusprofessions.data.repository.detail.remote;
 
 import fil.android.project.mydofusprofessions.data.api.model.Profession;
 import fil.android.project.mydofusprofessions.data.services.ProfessionService;

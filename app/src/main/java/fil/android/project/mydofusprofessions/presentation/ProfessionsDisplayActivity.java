@@ -18,7 +18,7 @@ public class ProfessionsDisplayActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private ListFragment listFragment;
-    private LearnedListFragment learnedListFragment ;
+    private LearnedListFragment learnedListFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
