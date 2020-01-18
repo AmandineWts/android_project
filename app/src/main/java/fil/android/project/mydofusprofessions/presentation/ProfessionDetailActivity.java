@@ -16,9 +16,6 @@ import fil.android.project.mydofusprofessions.data.api.model.Profession;
 import fil.android.project.mydofusprofessions.data.di.FakeDependencyInjection;
 import fil.android.project.mydofusprofessions.presentation.detail.ProfessionDetailContract;
 import fil.android.project.mydofusprofessions.presentation.detail.ProfessionDetailPresenter;
-import fil.android.project.mydofusprofessions.presentation.list.adapter.ProfessionActionInterface;
-import fil.android.project.mydofusprofessions.presentation.list.fragment.LearnedListFragment;
-import fil.android.project.mydofusprofessions.presentation.list.fragment.ListFragment;
 
 public class ProfessionDetailActivity extends AppCompatActivity implements ProfessionDetailContract.View {
 
@@ -49,7 +46,6 @@ public class ProfessionDetailActivity extends AppCompatActivity implements Profe
                 } else {
                     professionDetailPresenter.addProfessionAsLearned(currentProfession.getAnkamaId());
                 }
-                // update les listes des fragments
             }
         });
     }

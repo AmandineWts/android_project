@@ -18,7 +18,4 @@ public class ProfessionListRemoteDataSource {
         return professionService.getProfessions();
     }
 
-    public Single<Profession> getProfessionById(String id) {
-        return professionService.getProfessionById(id);
-    }
 }

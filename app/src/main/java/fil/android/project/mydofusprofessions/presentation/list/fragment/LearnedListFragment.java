@@ -18,12 +18,11 @@ import fil.android.project.mydofusprofessions.R;
 import fil.android.project.mydofusprofessions.data.di.FakeDependencyInjection;
 import fil.android.project.mydofusprofessions.presentation.list.ProfessionListContract;
 import fil.android.project.mydofusprofessions.presentation.list.ProfessionListPresenter;
-import fil.android.project.mydofusprofessions.presentation.list.adapter.ProfessionActionInterface;
 import fil.android.project.mydofusprofessions.presentation.list.adapter.ProfessionAdapter;
 import fil.android.project.mydofusprofessions.presentation.list.adapter.ProfessionItemViewModel;
 import fil.android.project.mydofusprofessions.presentation.list.mapper.ProfessionToItemViewModelMapper;
 
-public class LearnedListFragment extends Fragment implements ProfessionActionInterface, ProfessionListContract.View {
+public class LearnedListFragment extends Fragment implements ProfessionListContract.View {
 
     public static final String TAB_NAME = "Mes métiers appris";
 
@@ -63,7 +62,7 @@ public class LearnedListFragment extends Fragment implements ProfessionActionInt
 
     private void setupRecyclerView() {
         recyclerView = rootView.findViewById(R.id.recycler_view);
-        professionAdapter = new ProfessionAdapter(this);
+        professionAdapter = new ProfessionAdapter();
         recyclerView.setAdapter(professionAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         layoutManagerType = LINEAR_LAYOUT;
@@ -82,19 +81,10 @@ public class LearnedListFragment extends Fragment implements ProfessionActionInt
     @Override
     public void onResume() {
         super.onResume();
-        professionAdapter = new ProfessionAdapter(this);
+        professionAdapter = new ProfessionAdapter();
         recyclerView.setAdapter(professionAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         professionListPresenter.listLearnedProfessions();
-    }
-
-    @Override
-    public void onLearnedToggle(String professionId, boolean isLearned) {
-       /* if(isLearned) {
-            professionListPresenter.removeProfessionFromLearned(professionId);
-        } else {
-            professionListPresenter.addProfessionAsLearned(professionId);
-        }*/
     }
 
     @Override
@@ -102,15 +92,4 @@ public class LearnedListFragment extends Fragment implements ProfessionActionInt
         professionAdapter.bindViewModels(professionItemViewModelList);
     }
 
-    @Override
-    public void onProfessionAddedAsLearned() {
-        /*ImageView isLearnedImageView = rootView.findViewById(R.id.star_profession_not_learned);
-        isLearnedImageView.setImageResource(R.drawable.learned_logo);*/
-    }
-
-    @Override
-    public void onProfessionRemovedFromLearned() {
-       /* ImageView isLearnedImageView = rootView.findViewById(R.id.star_profession_not_learned);
-        isLearnedImageView.setImageResource(R.drawable.not_learned_logo);*/
-    }
 }

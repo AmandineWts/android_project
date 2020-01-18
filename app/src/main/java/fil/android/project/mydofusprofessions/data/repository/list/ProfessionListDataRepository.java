@@ -4,15 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fil.android.project.mydofusprofessions.data.api.model.Profession;
-import fil.android.project.mydofusprofessions.data.database.entity.ProfessionEntity;
 import fil.android.project.mydofusprofessions.data.repository.list.locale.ProfessionListLocaleDataSource;
 import fil.android.project.mydofusprofessions.data.repository.list.mapper.ProfessionToProfessionEntityMapper;
 import fil.android.project.mydofusprofessions.data.repository.list.remote.ProfessionListRemoteDataSource;
-import io.reactivex.Completable;
-import io.reactivex.CompletableSource;
 import io.reactivex.Single;
 import io.reactivex.functions.BiFunction;
-import io.reactivex.functions.Function;
 
 public class ProfessionListDataRepository implements ProfessionListRepository {
 
@@ -60,25 +56,4 @@ public class ProfessionListDataRepository implements ProfessionListRepository {
                 });
     }
 
-    @Override
-    public Completable markProfessionAsLearned(String professionId) {
-        return professionListRemoteDataSource.getProfessionById(professionId)
-                .map(new Function<Profession, ProfessionEntity>() {
-                    @Override
-                    public ProfessionEntity apply(Profession profession) {
-                        return professionToProfessionEntityMapper.map(profession);
-                    }
-                })
-                .flatMapCompletable(new Function<ProfessionEntity, CompletableSource>() {
-                    @Override
-                    public CompletableSource apply(ProfessionEntity professionEntity) throws Exception {
-                        return professionListLocaleDataSource.markProfessionAsLearned(professionEntity);
-                    }
-                });
-    }
-
-    @Override
-    public Completable unmarkProfessionAsLearned(String professionId) {
-        return professionListLocaleDataSource.unmarkProfessionAsLearned(professionId);
-    }
 }

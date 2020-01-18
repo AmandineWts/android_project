@@ -10,9 +10,6 @@ public interface ProfessionListContract {
 
         void displayProfessions(List<ProfessionItemViewModel> professionItemViewModelList);
 
-        void onProfessionAddedAsLearned();
-
-        void onProfessionRemovedFromLearned();
     }
 
     interface Presenter {
@@ -22,10 +19,6 @@ public interface ProfessionListContract {
         void attachView(View view);
 
         void listLearnedProfessions();
-
-        void addProfessionAsLearned(String professionId);
-
-        void removeProfessionFromLearned(String professionId);
 
     }
 

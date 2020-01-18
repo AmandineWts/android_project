@@ -8,8 +8,6 @@ public class ProfessionItemViewModel {
 
     private String imgUrl;
 
-    private boolean isLearned;
-
     public String getId() {
         return id;
     }
@@ -32,14 +30,6 @@ public class ProfessionItemViewModel {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
-    }
-
-    public boolean isLearned() {
-        return isLearned;
-    }
-
-    public void setLearned(boolean learned) {
-        isLearned = learned;
     }
 
 }

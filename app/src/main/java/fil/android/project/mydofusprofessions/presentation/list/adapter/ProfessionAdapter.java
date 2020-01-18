@@ -32,20 +32,15 @@ public class ProfessionAdapter extends RecyclerView.Adapter<ProfessionAdapter.Pr
 
         private CardView itemCardView;
 
-        private ImageView isLearnedImageView;
-
         private ProfessionItemViewModel professionItemViewModel;
 
-        private ProfessionActionInterface professionActionInterface;
 
-        ProfessionViewHolder(View v, final ProfessionActionInterface professionActionInterface) {
+        ProfessionViewHolder(View v) {
             super(v);
             this.v = v;
             this.nameTextView = v.findViewById(R.id.profession_name_textview);
             this.iconImageView = v.findViewById(R.id.profession_icon_imageview);
             this.itemCardView = v.findViewById(R.id.item_card_view);
-            //this.isLearnedImageView = v.findViewById(R.id.star_profession_not_learned);
-            this.professionActionInterface = professionActionInterface;
             setupListeners();
         }
 
@@ -57,21 +52,11 @@ public class ProfessionAdapter extends RecyclerView.Adapter<ProfessionAdapter.Pr
                     intent.putExtra("profession_id", professionItemViewModel.getId());
                     v.getContext().startActivity(intent);
                 }
-            });
-            /*this.isLearnedImageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    professionActionInterface.onLearnedToggle(professionItemViewModel.getId(), professionItemViewModel.isLearned());
-                }
-            });*/
-        }
+            });        }
 
         void bind(ProfessionItemViewModel professionItemViewModel) {
             this.professionItemViewModel = professionItemViewModel;
             nameTextView.setText(professionItemViewModel.getName());
-           /* if(professionItemViewModel.isLearned()) {
-                isLearnedImageView.setImageResource(R.drawable.learned_logo);
-            }*/
             Glide.with(v)
                     .load(professionItemViewModel.getImgUrl())
                     .centerCrop()
@@ -82,17 +67,15 @@ public class ProfessionAdapter extends RecyclerView.Adapter<ProfessionAdapter.Pr
     }
 
     private List<ProfessionItemViewModel> professionItemViewModelList;
-    private ProfessionActionInterface professionActionInterface;
 
-    public ProfessionAdapter(ProfessionActionInterface professionActionInterface) {
-        this.professionActionInterface = professionActionInterface;
+    public ProfessionAdapter() {
         professionItemViewModelList = new ArrayList<>();
     }
 
     @Override
     public ProfessionViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.profession_item, parent, false);
-        return new ProfessionViewHolder(v, professionActionInterface);
+        return new ProfessionViewHolder(v);
     }
 
     public void bindViewModels(List<ProfessionItemViewModel> professionItemViewModelList) {
