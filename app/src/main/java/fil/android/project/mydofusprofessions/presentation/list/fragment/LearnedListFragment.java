@@ -57,7 +57,6 @@ public class LearnedListFragment extends Fragment implements ProfessionListContr
         setupRecyclerView();
         professionListPresenter = new ProfessionListPresenter(FakeDependencyInjection.getProfessionListDataRepository(), new ProfessionToItemViewModelMapper());
         professionListPresenter.attachView(this);
-        professionListPresenter.listLearnedProfessions();
     }
 
     private void setupRecyclerView() {
@@ -83,7 +82,6 @@ public class LearnedListFragment extends Fragment implements ProfessionListContr
         super.onResume();
         professionAdapter = new ProfessionAdapter();
         recyclerView.setAdapter(professionAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         professionListPresenter.listLearnedProfessions();
     }
 
