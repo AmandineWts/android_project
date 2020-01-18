@@ -3,7 +3,7 @@ package fil.android.project.mydofusprofessions.presentation.detail;
 import android.util.Log;
 
 import fil.android.project.mydofusprofessions.data.api.model.Profession;
-import fil.android.project.mydofusprofessions.data.repository.detail.ProfessionDetailDataRepository;
+import fil.android.project.mydofusprofessions.data.repository.detail.ProfessionDetailRepository;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableCompletableObserver;
@@ -13,18 +13,18 @@ import io.reactivex.schedulers.Schedulers;
 public class ProfessionDetailPresenter implements ProfessionDetailContract.Presenter {
 
     private ProfessionDetailContract.View professionDetailContractView;
-    private ProfessionDetailDataRepository professionDetailDataRepository;
+    private ProfessionDetailRepository professionDetailRepository;
     private CompositeDisposable compositeDisposable;
 
 
-    public ProfessionDetailPresenter(ProfessionDetailDataRepository professionDetailDataRepository) {
-        this.professionDetailDataRepository = professionDetailDataRepository;
+    public ProfessionDetailPresenter(ProfessionDetailRepository professionDetailRepository) {
+        this.professionDetailRepository = professionDetailRepository;
         this.compositeDisposable = new CompositeDisposable();
     }
 
     @Override
     public void getDetailsById(String id) {
-        professionDetailDataRepository.getProfessionById(id).subscribeOn(Schedulers.io())
+        professionDetailRepository.getProfessionById(id).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<Profession>() {
 
@@ -42,7 +42,7 @@ public class ProfessionDetailPresenter implements ProfessionDetailContract.Prese
 
     @Override
     public void addProfessionAsLearned(String professionId) {
-        compositeDisposable.add(professionDetailDataRepository.markProfessionAsLearned(professionId)
+        compositeDisposable.add(professionDetailRepository.markProfessionAsLearned(professionId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableCompletableObserver() {
@@ -60,7 +60,7 @@ public class ProfessionDetailPresenter implements ProfessionDetailContract.Prese
 
     @Override
     public void removeProfessionFromLearned(String professionId) {
-        compositeDisposable.add(professionDetailDataRepository.unmarkProfessionAsLearned(professionId)
+        compositeDisposable.add(professionDetailRepository.unmarkProfessionAsLearned(professionId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableCompletableObserver() {
@@ -81,10 +81,4 @@ public class ProfessionDetailPresenter implements ProfessionDetailContract.Prese
         this.professionDetailContractView = view;
     }
 
-
-    @Override
-    public void detachView() {
-        this.professionDetailContractView = null;
-
-    }
 }

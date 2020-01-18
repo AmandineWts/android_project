@@ -8,7 +8,7 @@ import androidx.annotation.RequiresApi;
 import java.util.List;
 
 import fil.android.project.mydofusprofessions.data.api.model.Profession;
-import fil.android.project.mydofusprofessions.data.repository.list.ProfessionListDataRepository;
+import fil.android.project.mydofusprofessions.data.repository.list.ProfessionListRepository;
 import fil.android.project.mydofusprofessions.presentation.list.mapper.ProfessionToItemViewModelMapper;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.observers.DisposableSingleObserver;
@@ -17,11 +17,11 @@ import io.reactivex.schedulers.Schedulers;
 public class ProfessionListPresenter implements ProfessionListContract.Presenter {
 
     private ProfessionListContract.View professionsListContractView;
-    private ProfessionListDataRepository professionListDataRepository;
+    private ProfessionListRepository professionListRepository;
     private ProfessionToItemViewModelMapper professionToItemViewModelMapper;
 
-    public ProfessionListPresenter(ProfessionListDataRepository professionListDataRepository, ProfessionToItemViewModelMapper professionToItemViewModelMapper) {
-        this.professionListDataRepository = professionListDataRepository;
+    public ProfessionListPresenter(ProfessionListRepository professionListRepository, ProfessionToItemViewModelMapper professionToItemViewModelMapper) {
+        this.professionListRepository = professionListRepository;
         this.professionToItemViewModelMapper = professionToItemViewModelMapper;
     }
 
@@ -32,7 +32,7 @@ public class ProfessionListPresenter implements ProfessionListContract.Presenter
 
     @Override
     public void listProfessions() {
-        professionListDataRepository.listProfessions()
+        professionListRepository.listProfessions()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<List<Profession>>() {
@@ -53,7 +53,7 @@ public class ProfessionListPresenter implements ProfessionListContract.Presenter
 
     @Override
     public void listLearnedProfessions() {
-        professionListDataRepository.listLearnedProfessions()
+        professionListRepository.listLearnedProfessions()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<List<Profession>>() {
