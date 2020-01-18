@@ -80,6 +80,15 @@ public class LearnedListFragment extends Fragment implements ProfessionActionInt
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        professionAdapter = new ProfessionAdapter(this);
+        recyclerView.setAdapter(professionAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        professionListPresenter.listLearnedProfessions();
+    }
+
+    @Override
     public void onLearnedToggle(String professionId, boolean isLearned) {
        /* if(isLearned) {
             professionListPresenter.removeProfessionFromLearned(professionId);
