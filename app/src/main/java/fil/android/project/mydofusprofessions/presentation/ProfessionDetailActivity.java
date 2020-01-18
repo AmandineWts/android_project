@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
@@ -16,6 +18,7 @@ import fil.android.project.mydofusprofessions.data.api.model.Profession;
 import fil.android.project.mydofusprofessions.data.di.FakeDependencyInjection;
 import fil.android.project.mydofusprofessions.presentation.detail.ProfessionDetailContract;
 import fil.android.project.mydofusprofessions.presentation.detail.ProfessionDetailPresenter;
+import fil.android.project.mydofusprofessions.presentation.detail.adapter.HarvestAdapter;
 
 public class ProfessionDetailActivity extends AppCompatActivity implements ProfessionDetailContract.View {
 
@@ -26,6 +29,10 @@ public class ProfessionDetailActivity extends AppCompatActivity implements Profe
     private ImageView logoImageView;
     private Button isLearnedButton;
 
+    private TextView harvestRecyclerTitleTextView;
+    private RecyclerView harvestRecyclerView;
+    private HarvestAdapter harvestAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,8 +40,17 @@ public class ProfessionDetailActivity extends AppCompatActivity implements Profe
         setupPresenter();
         setupViews();
         setupListeners();
+        setupRecyclerView();
         String professionId =  getIntent().getStringExtra("profession_id");
         this.professionDetailPresenter.getDetailsById(professionId);
+    }
+
+    private void setupRecyclerView() {
+        harvestRecyclerView = this.findViewById(R.id.detail_recycler_view);
+        harvestAdapter = new HarvestAdapter();
+        harvestRecyclerView.setAdapter(harvestAdapter);
+        harvestRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        harvestRecyclerView.setHasFixedSize(true);
     }
 
     private void setupListeners() {
@@ -60,6 +76,8 @@ public class ProfessionDetailActivity extends AppCompatActivity implements Profe
         this.descriptionTextView = findViewById(R.id.profession_detail_description_textview);
         this.logoImageView = findViewById(R.id.profession_detail_logo_imageview);
         this.isLearnedButton = findViewById(R.id.profession_detail_profession_learned_button);
+        this.harvestRecyclerTitleTextView = findViewById(R.id.profession_detail_recycler_title_textview);
+        harvestRecyclerTitleTextView.setText("Ressources récoltables");
     }
 
     @Override
@@ -76,6 +94,11 @@ public class ProfessionDetailActivity extends AppCompatActivity implements Profe
                 .load(profession.getImgUrl())
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(logoImageView);
+        if(!profession.getHarvests().isEmpty()) {
+            harvestAdapter.bindViewModels(profession.getHarvests());
+        } else {
+            harvestRecyclerTitleTextView.setText("Métier de craft : aucune ressource n'est récoltable.");
+        }
     }
 
     @Override

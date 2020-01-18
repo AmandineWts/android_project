@@ -16,6 +16,8 @@ public class Profession {
 
     private int personalLvl;
 
+    private List<Harvest> harvests;
+
 
     public String getAnkamaId() {
         return ankamaId;
@@ -63,5 +65,13 @@ public class Profession {
 
     public void setPersonalLvl(int personalLvl) {
         this.personalLvl = personalLvl;
+    }
+
+    public List<Harvest> getHarvests() {
+        return harvests;
+    }
+
+    public void setHarvests(List<Harvest> harvests) {
+        this.harvests = harvests;
     }
 }
