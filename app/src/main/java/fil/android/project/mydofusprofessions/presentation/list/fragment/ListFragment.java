@@ -65,6 +65,7 @@ public class ListFragment extends Fragment implements ProfessionActionInterface,
         professionAdapter = new ProfessionAdapter(this);
         recyclerView.setAdapter(professionAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setHasFixedSize(true);
         layoutManagerType = LINEAR_LAYOUT;
     }
 
