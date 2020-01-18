@@ -85,10 +85,12 @@ public class ProfessionDetailActivity extends AppCompatActivity implements Profe
     @Override
     public void onProfessionAddedAsLearned() {
         isLearnedButton.setText("Retirer des métiers appris");
+        currentProfession.setLearned(true);
     }
 
     @Override
     public void onProfessionRemovedFromLearned() {
         isLearnedButton.setText("Ajouter aux métiers appris");
+        currentProfession.setLearned(false);
     }
 }
