@@ -77,7 +77,7 @@ public class ProfessionDetailActivity extends AppCompatActivity implements Profe
         this.logoImageView = findViewById(R.id.profession_detail_logo_imageview);
         this.isLearnedButton = findViewById(R.id.profession_detail_profession_learned_button);
         this.harvestRecyclerTitleTextView = findViewById(R.id.profession_detail_recycler_title_textview);
-        harvestRecyclerTitleTextView.setText("Ressources récoltables");
+        harvestRecyclerTitleTextView.setText(R.string.harvest_title);
     }
 
     @Override
@@ -86,9 +86,9 @@ public class ProfessionDetailActivity extends AppCompatActivity implements Profe
         nameTextView.setText(profession.getName());
         descriptionTextView.setText(profession.getDescription());
         if(profession.isLearned()) {
-            isLearnedButton.setText("Retirer des métiers appris");
+            isLearnedButton.setText(R.string.remove_profession);
         } else {
-            isLearnedButton.setText("Ajouter aux métiers appris");
+            isLearnedButton.setText(R.string.add_profession);
         }
         Glide.with(findViewById(R.id.detail_card_view))
                 .load(profession.getImgUrl())
@@ -97,19 +97,19 @@ public class ProfessionDetailActivity extends AppCompatActivity implements Profe
         if(!profession.getHarvests().isEmpty()) {
             harvestAdapter.bindViewModels(profession.getHarvests());
         } else {
-            harvestRecyclerTitleTextView.setText("Métier de craft : aucune ressource n'est récoltable.");
+            harvestRecyclerTitleTextView.setText(R.string.no_harvest_message);
         }
     }
 
     @Override
     public void onProfessionAddedAsLearned() {
-        isLearnedButton.setText("Retirer des métiers appris");
+        isLearnedButton.setText(R.string.remove_profession);
         currentProfession.setLearned(true);
     }
 
     @Override
     public void onProfessionRemovedFromLearned() {
-        isLearnedButton.setText("Ajouter aux métiers appris");
+        isLearnedButton.setText(R.string.add_profession);
         currentProfession.setLearned(false);
     }
 }

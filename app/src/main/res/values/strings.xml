@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Dofus Métiers</string>
+    <string name="fragment_title_list">Mes métiers appris</string>
+    <string name="harvest_title">Ressources récoltables</string>
+    <string name="remove_profession">Retirer des métiers appris</string>
+    <string name="add_profession">Ajouter aux métiers appris</string>
+    <string name="no_harvest_message">Métier de craft : aucune ressource n\'est récoltable.</string>
     <string name="location_harvest_title"><u>Localisations :</u></string>
 </resources>
