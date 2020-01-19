@@ -20,6 +20,9 @@ import java.util.List;
 import fil.android.project.mydofusprofessions.R;
 import fil.android.project.mydofusprofessions.presentation.ProfessionDetailActivity;
 
+/**
+ * Profession adapter to handle recycler view display
+ */
 public class ProfessionAdapter extends RecyclerView.Adapter<ProfessionAdapter.ProfessionViewHolder> {
 
     public static class ProfessionViewHolder extends RecyclerView.ViewHolder {
@@ -44,6 +47,9 @@ public class ProfessionAdapter extends RecyclerView.Adapter<ProfessionAdapter.Pr
             setupListeners();
         }
 
+        /**
+         * setup listener on the card view to see details of it when clicking on it
+         */
         private void setupListeners() {
             this.itemCardView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -54,6 +60,10 @@ public class ProfessionAdapter extends RecyclerView.Adapter<ProfessionAdapter.Pr
                 }
             });        }
 
+        /**
+         * bind the profession item view model to the item views
+         * @param professionItemViewModel the profession item view model to display
+         */
         void bind(ProfessionItemViewModel professionItemViewModel) {
             this.professionItemViewModel = professionItemViewModel;
             nameTextView.setText(professionItemViewModel.getName());

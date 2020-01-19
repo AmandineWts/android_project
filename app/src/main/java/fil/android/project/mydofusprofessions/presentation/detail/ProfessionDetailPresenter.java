@@ -10,6 +10,9 @@ import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
+/**
+ * profession detail presenter to make calls to data repositories
+ */
 public class ProfessionDetailPresenter implements ProfessionDetailContract.Presenter {
 
     private ProfessionDetailContract.View professionDetailContractView;
@@ -22,6 +25,10 @@ public class ProfessionDetailPresenter implements ProfessionDetailContract.Prese
         this.compositeDisposable = new CompositeDisposable();
     }
 
+    /**
+     * make a call to the repository to get the details of a profession by its id
+     * @param id the id of the profession to get
+     */
     @Override
     public void getDetailsById(String id) {
         professionDetailRepository.getProfessionById(id).subscribeOn(Schedulers.io())
@@ -40,6 +47,10 @@ public class ProfessionDetailPresenter implements ProfessionDetailContract.Prese
                 });
     }
 
+    /**
+     * make a call to the repository to mark a profession as learned with its id
+     * @param professionId the id of the profession to mark as learned
+     */
     @Override
     public void addProfessionAsLearned(String professionId) {
         compositeDisposable.add(professionDetailRepository.markProfessionAsLearned(professionId)
@@ -58,6 +69,10 @@ public class ProfessionDetailPresenter implements ProfessionDetailContract.Prese
                 }));
     }
 
+    /**
+     * make a call to the repository to unmark a profession from learned
+     * @param professionId the id of the profession to remove from learned
+     */
     @Override
     public void removeProfessionFromLearned(String professionId) {
         compositeDisposable.add(professionDetailRepository.unmarkProfessionAsLearned(professionId)
@@ -76,6 +91,10 @@ public class ProfessionDetailPresenter implements ProfessionDetailContract.Prese
                 }));
     }
 
+    /**
+     * attach view
+     * @param view the view to attach
+     */
     @Override
     public void attachView(ProfessionDetailContract.View view) {
         this.professionDetailContractView = view;

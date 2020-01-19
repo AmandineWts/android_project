@@ -22,6 +22,9 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * class to simulate the injection of dependencies
+ */
 public class FakeDependencyInjection {
 
     private static Retrofit retrofit;
@@ -37,6 +40,10 @@ public class FakeDependencyInjection {
 
     private static final String API_URL = "https://fr.dofus.dofapi.fr/";
 
+    /**
+     * get profession list data repository instance
+     * @return the profession list data repository instance
+     */
     public static ProfessionListDataRepository getProfessionListDataRepository() {
         if(professionListDataRepository == null) {
             ProfessionListRemoteDataSource professionListRemoteDataSource = new ProfessionListRemoteDataSource(getProfessionService());
@@ -47,6 +54,10 @@ public class FakeDependencyInjection {
         return professionListDataRepository;
     }
 
+    /**
+     * get profession detail data repository instance
+     * @return the profession detail data repository instance
+     */
     public static ProfessionDetailDataRepository getProfessionDetailDataRepository() {
         if(professionDetailDataRepository == null) {
             ProfessionDetailRemoteDataSource professionDetailRemoteDataSource = new ProfessionDetailRemoteDataSource(getProfessionService());
@@ -57,6 +68,10 @@ public class FakeDependencyInjection {
         return professionDetailDataRepository;
     }
 
+    /**
+     * get profession service instance
+     * @return profession service instance
+     */
     public static ProfessionService getProfessionService() {
         if(professionService == null) {
             professionService = getRetrofit().create(ProfessionService.class);
@@ -64,6 +79,10 @@ public class FakeDependencyInjection {
         return professionService;
     }
 
+    /**
+     * get profession database instance
+     * @return profession database instance
+     */
     public static MyProfessionsDatabase getMyProfessionsDatabase() {
         if (myProfessionsDatabase == null) {
             myProfessionsDatabase = Room.databaseBuilder(applicationContext.getApplicationContext(), MyProfessionsDatabase.class, "my-professions-database").build();
@@ -71,6 +90,10 @@ public class FakeDependencyInjection {
         return myProfessionsDatabase;
     }
 
+    /**
+     * get retrofit instance
+     * @return retrofit instance
+     */
     public static Retrofit getRetrofit() {
         if (retrofit == null) {
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -90,6 +113,10 @@ public class FakeDependencyInjection {
         return retrofit;
     }
 
+    /**
+     * get gson instance
+     * @return gson instance
+     */
     public static Gson getGson() {
         if (gson == null) {
             gson = new Gson();

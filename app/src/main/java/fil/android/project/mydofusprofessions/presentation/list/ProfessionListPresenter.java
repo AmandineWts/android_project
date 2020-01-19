@@ -25,11 +25,18 @@ public class ProfessionListPresenter implements ProfessionListContract.Presenter
         this.professionToItemViewModelMapper = professionToItemViewModelMapper;
     }
 
+    /**
+     * attach the view
+     * @param view the view to attach
+     */
     @Override
     public void attachView(ProfessionListContract.View view) {
         this.professionsListContractView = view;
     }
 
+    /**
+     * make a call to the repository to get the list of all the professions
+     */
     @Override
     public void listProfessions() {
         professionListRepository.listProfessions()
@@ -51,6 +58,9 @@ public class ProfessionListPresenter implements ProfessionListContract.Presenter
 
     }
 
+    /**
+     * make a call to the repository to get the list of all the learned professions
+     */
     @Override
     public void listLearnedProfessions() {
         professionListRepository.listLearnedProfessions()

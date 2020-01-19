@@ -22,6 +22,9 @@ import fil.android.project.mydofusprofessions.presentation.list.adapter.Professi
 import fil.android.project.mydofusprofessions.presentation.list.adapter.ProfessionItemViewModel;
 import fil.android.project.mydofusprofessions.presentation.list.mapper.ProfessionToItemViewModelMapper;
 
+/**
+ * fragment to display the list of all the professions
+ */
 public class ListFragment extends Fragment implements ProfessionListContract.View {
 
     public static final String TAB_NAME = "Liste des métiers";
@@ -59,6 +62,9 @@ public class ListFragment extends Fragment implements ProfessionListContract.Vie
         professionListPresenter.listProfessions();
     }
 
+    /**
+     * setup the recycler view with its adapter
+     */
     private void setupRecyclerView() {
         recyclerView = rootView.findViewById(R.id.recycler_view);
         professionAdapter = new ProfessionAdapter();
@@ -68,6 +74,9 @@ public class ListFragment extends Fragment implements ProfessionListContract.Vie
         layoutManagerType = LINEAR_LAYOUT;
     }
 
+    /**
+     * update the layout display to grid or list
+     */
     public void updateLayoutDisplay() {
         if (layoutManagerType.equals(LINEAR_LAYOUT)) {
             recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
@@ -78,6 +87,10 @@ public class ListFragment extends Fragment implements ProfessionListContract.Vie
         }
     }
 
+    /**
+     * bind the profession item view model list to the adapter
+     * @param professionItemViewModelList the profession item view model list to bind
+     */
     @Override
     public void displayProfessions(List<ProfessionItemViewModel> professionItemViewModelList) {
         professionAdapter.bindViewModels(professionItemViewModelList);

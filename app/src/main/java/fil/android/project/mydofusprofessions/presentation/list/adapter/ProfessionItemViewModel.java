@@ -1,5 +1,8 @@
 package fil.android.project.mydofusprofessions.presentation.list.adapter;
 
+/**
+ * profession item view model to display profession in the lists
+ */
 public class ProfessionItemViewModel {
 
     private String id;

@@ -14,6 +14,10 @@ import fil.android.project.mydofusprofessions.R;
 import fil.android.project.mydofusprofessions.presentation.list.fragment.LearnedListFragment;
 import fil.android.project.mydofusprofessions.presentation.list.fragment.ListFragment;
 
+/**
+ * main activity containing a view pager and its 2 fragments
+ * displays the list of all the professions in one fragment and displays the list of all the learned professions in the other fragment
+ */
 public class ProfessionsDisplayActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
@@ -33,6 +37,11 @@ public class ProfessionsDisplayActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * handle click on layout display icon and change the display of the lists in both fragments
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.icon_layout_handler) {
@@ -44,6 +53,10 @@ public class ProfessionsDisplayActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * change the icon of layout display depending of current display
+     * @param item the item to change
+     */
     private void changeIconDisplayed(MenuItem item) {
         Drawable currentIcon = item.getIcon();
         Drawable icon = getResources().getDrawable(R.drawable.grid_layout);
@@ -55,6 +68,9 @@ public class ProfessionsDisplayActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * setup the view pager with its fragments
+     */
     private void setupViewPagerAndTabs() {
 
         viewPager = findViewById(R.id.tab_viewpager);

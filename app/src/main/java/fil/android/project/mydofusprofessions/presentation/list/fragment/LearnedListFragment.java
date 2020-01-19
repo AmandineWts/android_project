@@ -22,6 +22,9 @@ import fil.android.project.mydofusprofessions.presentation.list.adapter.Professi
 import fil.android.project.mydofusprofessions.presentation.list.adapter.ProfessionItemViewModel;
 import fil.android.project.mydofusprofessions.presentation.list.mapper.ProfessionToItemViewModelMapper;
 
+/**
+ * fragment to display the learned profession as list
+ */
 public class LearnedListFragment extends Fragment implements ProfessionListContract.View {
 
     public static final String TAB_NAME = "Mes métiers appris";
@@ -59,6 +62,9 @@ public class LearnedListFragment extends Fragment implements ProfessionListContr
         professionListPresenter.attachView(this);
     }
 
+    /**
+     * setup the recycler view with its adapter
+     */
     private void setupRecyclerView() {
         recyclerView = rootView.findViewById(R.id.recycler_view);
         professionAdapter = new ProfessionAdapter();
@@ -67,6 +73,9 @@ public class LearnedListFragment extends Fragment implements ProfessionListContr
         layoutManagerType = LINEAR_LAYOUT;
     }
 
+    /**
+     * update the layout display to grid or list
+     */
     public void updateLayoutDisplay() {
         if(layoutManagerType.equals(LINEAR_LAYOUT)) {
             recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
@@ -77,6 +86,9 @@ public class LearnedListFragment extends Fragment implements ProfessionListContr
         }
     }
 
+    /**
+     * refreshes the list when it changes
+     */
     @Override
     public void onResume() {
         super.onResume();
@@ -85,6 +97,10 @@ public class LearnedListFragment extends Fragment implements ProfessionListContr
         professionListPresenter.listLearnedProfessions();
     }
 
+    /**
+     * bind the profession item view model list to the adapter
+     * @param professionItemViewModelList the profession item view model list to bind
+     */
     @Override
     public void displayProfessions(List<ProfessionItemViewModel> professionItemViewModelList) {
         professionAdapter.bindViewModels(professionItemViewModelList);

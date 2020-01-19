@@ -6,6 +6,9 @@ import androidx.room.RoomDatabase;
 import fil.android.project.mydofusprofessions.data.database.dao.ProfessionDao;
 import fil.android.project.mydofusprofessions.data.database.entity.ProfessionEntity;
 
+/**
+ * class representing the rootDatabase for Professions
+ */
 @Database(entities = {ProfessionEntity.class}, version = 1, exportSchema = false)
 public abstract class MyProfessionsDatabase extends RoomDatabase {
 

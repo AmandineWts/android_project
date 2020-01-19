@@ -13,18 +13,33 @@ import io.reactivex.Single;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Function;
 
+/**
+ * implementation of the profession detail repository
+ * makes the link between remote and locale datasources
+ */
 public class ProfessionDetailDataRepository implements ProfessionDetailRepository {
 
     private ProfessionDetailRemoteDataSource professionDetailRemoteDataSource;
     private ProfessionDetailLocaleDataSource professionDetailLocaleDataSource;
     private ProfessionToProfessionEntityMapper professionToProfessionEntityMapper;
 
+    /**
+     * constructor
+     * @param professionDetailRemoteDataSource instance of the profession detail remote data source
+     * @param professionDetailLocaleDataSource instance of the profession detail locale data source
+     * @param professionToProfessionEntityMapper instance of the profession to profession entity mapper
+     */
     public ProfessionDetailDataRepository(ProfessionDetailRemoteDataSource professionDetailRemoteDataSource, ProfessionDetailLocaleDataSource professionDetailLocaleDataSource, ProfessionToProfessionEntityMapper professionToProfessionEntityMapper) {
         this.professionDetailRemoteDataSource = professionDetailRemoteDataSource;
         this.professionDetailLocaleDataSource = professionDetailLocaleDataSource;
         this.professionToProfessionEntityMapper = professionToProfessionEntityMapper;
     }
 
+    /**
+     * get a profession by its id
+     * @param id the id of the profession
+     * @return a single of the profession
+     */
     @Override
     public Single<Profession> getProfessionById(String id) {
         return professionDetailRemoteDataSource.getProfessionById(id)
@@ -39,6 +54,11 @@ public class ProfessionDetailDataRepository implements ProfessionDetailRepositor
                 });
     }
 
+    /**
+     * mark a profession as learned with its id
+     * @param professionId profession id to learn
+     * @return completable to inform of the success or not
+     */
     @Override
     public Completable markProfessionAsLearned(String professionId) {
         return professionDetailRemoteDataSource.getProfessionById(professionId)
@@ -56,6 +76,11 @@ public class ProfessionDetailDataRepository implements ProfessionDetailRepositor
                 });
     }
 
+    /**
+     * unmark a profession from learned with its id
+     * @param professionId profession id to unlearn
+     * @return completable to inform of the success or not
+     */
     @Override
     public Completable unmarkProfessionAsLearned(String professionId) {
         return professionDetailLocaleDataSource.unmarkProfessionAsLearned(professionId);

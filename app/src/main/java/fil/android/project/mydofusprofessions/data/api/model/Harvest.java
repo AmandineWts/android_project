@@ -2,6 +2,9 @@ package fil.android.project.mydofusprofessions.data.api.model;
 
 import java.util.List;
 
+/**
+ * Object received from the API to represent a harvest
+ */
 public class Harvest {
 
     private String imgUrl;

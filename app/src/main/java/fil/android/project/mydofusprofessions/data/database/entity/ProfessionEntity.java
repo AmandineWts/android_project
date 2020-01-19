@@ -5,6 +5,9 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+/**
+ * Profession entity to represent what is store in the database
+ */
 @Entity
 public class ProfessionEntity {
 

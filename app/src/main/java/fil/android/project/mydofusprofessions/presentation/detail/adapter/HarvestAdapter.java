@@ -18,6 +18,9 @@ import java.util.List;
 import fil.android.project.mydofusprofessions.R;
 import fil.android.project.mydofusprofessions.data.api.model.Harvest;
 
+/**
+ * Harvest adapter to handle recycler view display
+ */
 public class HarvestAdapter extends RecyclerView.Adapter<HarvestAdapter.HarvestViewHolder> {
 
     public static class HarvestViewHolder extends RecyclerView.ViewHolder {
@@ -43,6 +46,10 @@ public class HarvestAdapter extends RecyclerView.Adapter<HarvestAdapter.HarvestV
             this.locationsTextView = v.findViewById(R.id.harvest_locations_textview);
         }
 
+        /**
+         * bind the harvest data to the item views
+         * @param harvest the harvest to display
+         */
         void bind(Harvest harvest) {
             this.harvest = harvest;
             nameTextView.setText(harvest.getName());
@@ -55,6 +62,10 @@ public class HarvestAdapter extends RecyclerView.Adapter<HarvestAdapter.HarvestV
                     .into(iconImageView);
         }
 
+        /**
+         * iterate over the locations to produce a string to display and set it to the text view
+         * @param locations a list of string of the harvest locations
+         */
         private void setLocations(List<String> locations) {
             String res = "";
             for (String location : locations) {

@@ -7,6 +7,9 @@ import com.facebook.stetho.Stetho;
 
 import fil.android.project.mydofusprofessions.data.di.FakeDependencyInjection;
 
+/**
+ * main class to initialize the application
+ */
 public class MyDofusProfessionsApplication extends Application {
 
     @Override
