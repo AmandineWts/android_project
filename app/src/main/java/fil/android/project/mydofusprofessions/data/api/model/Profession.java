@@ -14,8 +14,6 @@ public class Profession {
 
     private boolean isLearned;
 
-    private int personalLvl;
-
     private List<Harvest> harvests;
 
 
@@ -59,13 +57,6 @@ public class Profession {
         isLearned = learned;
     }
 
-    public int getPersonalLvl() {
-        return personalLvl;
-    }
-
-    public void setPersonalLvl(int personalLvl) {
-        this.personalLvl = personalLvl;
-    }
 
     public List<Harvest> getHarvests() {
         return harvests;

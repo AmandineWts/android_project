@@ -1,4 +1,4 @@
-package fil.android.project.mydofusprofessions.data.repository.list.mapper;
+package fil.android.project.mydofusprofessions.data.repository.detail.mapper;
 
 import fil.android.project.mydofusprofessions.data.api.model.Profession;
 import fil.android.project.mydofusprofessions.data.database.entity.ProfessionEntity;
